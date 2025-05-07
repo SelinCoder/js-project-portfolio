@@ -1,4 +1,16 @@
 body {
-  background: pink;
-  color: hotpink;
+  background: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.app {
+  height: 100vh;
+}
+
+html {
+  scroll-behavior: smooth;
 }
