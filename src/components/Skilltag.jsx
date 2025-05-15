@@ -45,6 +45,7 @@ const SkillItem = styled.div`
   border-radius: 5px;
   text-align: center;
   font-size: 16px;
+  text-align: center;
 
   @media (max-width: 480px) {
     font-size: 15px;

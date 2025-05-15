@@ -5,19 +5,10 @@ import Skilltag from "./Skilltag";
 const SkillsContainer = styled.div`
   background-color: #e1c1ac;
   width: 100%;
-  min-height: 100vh; /* fix height conflict */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 40px 20px;
 
-  @media (max-width: 768px) {
-    padding: 60px 20px;
-  }
-
   @media (max-width: 480px) {
-    padding: 40px 16px;
+    padding: 30px 16px;
   }
 `;
 
@@ -61,7 +52,6 @@ const Skills = () => {
     "Git",
     "GitHub",
   ];
-
   const toolbox = [
     "Visual Studio Code",
     "Adobe Illustrator",
@@ -70,11 +60,9 @@ const Skills = () => {
     "Figma",
     "Slack",
   ];
-
   const upcoming = ["Java", "Python", "C++"];
-
   const more = [
-    "Visuall Merchandising",
+    "Visual Merchandising",
     "Branding",
     "Strategy",
     "Process Design",

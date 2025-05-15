@@ -4,7 +4,7 @@ import Content from "./Content";
 const TechContainer = styled.div`
   background-color: #e3c4b14a;
   width: 100%;
-  min-height: 100vh; /* changed from fixed height to allow content to grow */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,7 @@ const TechContainer = styled.div`
 
 const Paragraph = styled.p`
   width: 900px;
-  max-width: 100%; /* ensures it never overflows container */
+  max-width: 100%;
   font-size: 20px;
   line-height: 1.6;
   margin-bottom: 20px;

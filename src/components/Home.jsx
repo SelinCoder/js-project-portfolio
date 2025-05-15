@@ -1,14 +1,14 @@
-import Navlinks from "./Navlinks";
 import styled from "styled-components";
+import Navlinks from "./Navlinks";
 import selin from "../assets/selin.jpg";
 
 const HomeContainer = styled.div`
   text-align: center;
-  height: 1000px;
+  padding: 100px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* important for horizontal centering */
+  align-items: center;
 `;
 
 const Presentation = styled.h3`
@@ -16,23 +16,47 @@ const Presentation = styled.h3`
   color: black;
   font-weight: 500;
   margin-bottom: 10px;
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 const Name = styled.h1`
   font-size: 70px;
   color: #c57763;
-  margin: 0px;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
+
+  @media (max-width: 480px) {
+    font-size: 40px;
+  }
 `;
 
 const ImageContainer = styled.div`
   margin-top: 20px;
+
+  img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 50%;
+
+    @media (max-width: 480px) {
+      width: 200px;
+      height: 200px;
+    }
+  }
 `;
 
 const Info = styled.p`
   margin-top: 20px;
   font-weight: 400;
   font-size: 25px;
+  text-align: center;
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `;
 
 const Home = () => {
@@ -40,16 +64,10 @@ const Home = () => {
     <>
       <Navlinks />
       <HomeContainer>
-        <Presentation>Hi there, I´m </Presentation>
+        <Presentation>Hi there, I’m</Presentation>
         <Name>Selin Carbone</Name>
         <ImageContainer>
-          <img
-            src={selin}
-            style={{
-              height: "500px",
-              borderRadius: "500px",
-            }}
-          />
+          <img src={selin} alt="Selin Carbone" />
         </ImageContainer>
         <Info>
           Creative Fullstack Web Developer with a background in
