@@ -1,3 +1,6 @@
+import styled from "styled-components";
+import Content from "./Content";
+
 const ContactContainer = styled.div`
   display: flex;
   flex-direction: column;

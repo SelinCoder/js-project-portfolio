@@ -1,3 +1,4 @@
+import ProjectCard from "./ProjectCard";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Content from "./Content";
@@ -12,6 +13,7 @@ const ProjectContainer = styled.div`
   width: 100%;
   padding: 60px 20px;
   position: relative;
+  padding: 60px 20px 400px;
 `;
 
 const Title = styled.h1`
@@ -26,9 +28,7 @@ const ScrollWrapper = styled.div`
   overflow-x: auto;
   gap: 30px;
   padding-bottom: 20px;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;
-  will-change: scroll-position;
+  align-items: stretch;
 
   &::-webkit-scrollbar {
     height: 6px;
@@ -37,84 +37,6 @@ const ScrollWrapper = styled.div`
   &::-webkit-scrollbar-thumb {
     background: #c57763;
     border-radius: 10px;
-  }
-`;
-
-const ProjectCard = styled.div`
-  width: 25vw;
-  min-width: 280px;
-  height: 500px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 768px) {
-    width: 80vw;
-    height: auto;
-  }
-`;
-
-const ProjectImage = styled.img.attrs(() => ({
-  loading: "lazy",
-}))`
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-`;
-
-const ProjectTitle = styled.h2`
-  font-size: 22px;
-  margin: 12px 0 6px;
-  min-height: 50px;
-  text-align: center;
-`;
-
-const Paragraph = styled.p`
-  font-size: 16px;
-  min-height: 60px;
-  text-align: center;
-`;
-
-const SkillsWrapper = styled.div`
-  margin-top: auto;
-  margin-bottom: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-`;
-
-const SkillBox = styled.span`
-  display: inline-block;
-  background: #f0f0f0;
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 16px;
-`;
-
-const Button = styled.button`
-  font-size: 17px;
-  background: black;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #c57763;
   }
 `;
 
@@ -182,12 +104,29 @@ const Projects = () => {
     };
   }, []);
 
+  const ScrollWrapper = styled.div`
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding-bottom: 20px;
+    height: auto; /* 🟢 Gör så att höjden växer automatiskt */
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #c57763;
+      border-radius: 10px;
+    }
+  `;
+
   // Jämn, automatisk scroll
   useEffect(() => {
     const wrapper = scrollRef.current;
     if (!wrapper || !carouselActive) return;
 
-    const speed = 1; // px per steg
+    const speed = 1;
     const interval = setInterval(() => {
       if (hovering) return;
 
@@ -197,7 +136,7 @@ const Projects = () => {
       } else {
         wrapper.scrollBy({ left: speed, behavior: "auto" });
       }
-    }, 30); // justera 20–60ms för mjukare/snabbare scroll
+    }, 30);
 
     return () => clearInterval(interval);
   }, [hovering, carouselActive]);
@@ -206,28 +145,18 @@ const Projects = () => {
     <Content>
       <ProjectContainer ref={containerRef}>
         <Title>Projects</Title>
-
         <ScrollWrapper ref={scrollRef}>
           {projectList.map((p, index) => (
             <ProjectCard
               key={index}
+              image={p.image}
+              title={p.title}
+              description={p.description}
+              skills={p.skills}
+              link={p.link}
               onMouseEnter={() => setHovering(true)}
               onMouseLeave={() => setHovering(false)}
-            >
-              <ProjectImage src={p.image} alt={p.title} />
-              <ProjectTitle>{p.title}</ProjectTitle>
-              <Paragraph>{p.description}</Paragraph>
-
-              <SkillsWrapper>
-                {p.skills.map((skill, i) => (
-                  <SkillBox key={i}>{skill}</SkillBox>
-                ))}
-              </SkillsWrapper>
-
-              <Button onClick={() => window.open(p.link, "_blank")}>
-                Visit site
-              </Button>
-            </ProjectCard>
+            />
           ))}
         </ScrollWrapper>
       </ProjectContainer>
