@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Navlinks from "./Navlinks";
-import selin from "../assets/selin.jpg";
+import selin from "../assets/SelinProfilePic.png";
 
 const HomeContainer = styled.div`
   text-align: center;

@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Content from "./Content";
-import image1 from "../assets/image1.png";
-import image2 from "../assets/Recipe.png";
-import image3 from "../assets/image3.png";
-import image4 from "../assets/image4.png";
-import image5 from "../assets/portfolio.png";
+import image1 from "../assets/AIRobots.jpg";
+import image2 from "../assets/Recipelibrarypage.png";
+import image3 from "../assets/WeatherApp.png";
+import image4 from "../assets/AccessibilityQuiz.png";
+import image5 from "../assets/Portfoliopage.png";
 
 const ProjectContainer = styled.div`
   background-color: #e3c4b14a;
@@ -66,11 +66,12 @@ const ProjectCard = styled.div`
   }
 `;
 
-const ProjectImage = styled.img`
+const ProjectImage = styled.img.attrs(() => ({
+  loading: "lazy",
+}))`
   width: 100%;
-  height: 180px;
+  height: auto;
   object-fit: cover;
-  border-radius: 8px;
 `;
 
 const ProjectTitle = styled.h2`
